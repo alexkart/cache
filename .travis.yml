@@ -47,8 +47,8 @@ before_script:
     # enable code coverage
     - |
         if [ $TASK_TESTS_COVERAGE == 1 ]; then
-        PHPUNIT_COVERAGE_FLAG="--coverage-clover=coverage.clover"
-    fi
+            PHPUNIT_COVERAGE_FLAG="--coverage-clover=coverage.clover"
+        fi
 
 script:
     - phpdbg -qrr vendor/bin/phpunit --verbose $PHPUNIT_COVERAGE_FLAG
