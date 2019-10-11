@@ -32,7 +32,7 @@ install:
     - |
         if [[ $TASK_TESTS_COVERAGE != 1 ]]; then
           # disable xdebug for performance reasons when code coverage is not needed
-          phpdismod xdebug
+          phpenv config-rm xdebug.ini
         fi
     - travis_retry composer self-update
     - travis_retry composer global require hirak/prestissimo
