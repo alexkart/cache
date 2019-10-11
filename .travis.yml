@@ -16,10 +16,11 @@ matrix:
     fast_finish: true
     include:
         -   php: "7.2"
+            env:
+                - TASK_TESTS_COVERAGE=1
         -   php: "7.3"
             env:
                 - TASK_STATIC_ANALYSIS=1
-                - TASK_TESTS_COVERAGE=1
         -   php: nightly
 
     allow_failures:
@@ -32,7 +33,7 @@ install:
     - |
         if [[ $TASK_TESTS_COVERAGE != 1 ]]; then
           # disable xdebug for performance reasons when code coverage is not needed
-          phpenv config-rm xdebug.ini
+          phpenv config-rm xdebug.ini || return 0
         fi
     - travis_retry composer self-update
     - travis_retry composer global require hirak/prestissimo
